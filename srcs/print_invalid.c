@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lowcase.c                                       :+:      :+:    :+:   */
+/*   print_invalid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/20 23:41:11 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/30 09:08:12 by mikim            ###   ########.fr       */
+/*   Created: 2017/04/17 16:47:27 by mikim             #+#    #+#             */
+/*   Updated: 2017/04/30 09:14:19 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lowcase(char *s)
+void	print_invalid_width(t_env *e)
 {
-	int i;
+	while (e->flag.width-- > 1)
+		e->ret += (e->flag.zero == 1 ?
+		write(e->fd, "0", 1) : write(e->fd, " ", 1));
+}
 
-	i = -1;
-	while (s[++i])
+void	print_invalid_spec(t_env *e, char c)
+{
+	if (e->flag.minus)
 	{
-		if (s[i] >= 65 && s[i] <= 90)
-			s[i] += 32;
+		e->ret += write(e->fd, &c, 1);
+		print_invalid_width(e);
 	}
+	else
+	{
+		print_invalid_width(e);
+		e->ret += write(e->fd, &c, 1);
+	}
+	e->i++;
 }

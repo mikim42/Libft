@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lltoa_base.c                                    :+:      :+:    :+:   */
+/*   ft_uns_lltoa_base.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/22 17:41:00 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/30 09:08:06 by mikim            ###   ########.fr       */
+/*   Updated: 2017/04/30 09:10:13 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_chklen(long long n, int base, int *len)
+static void	ft_chklen(unsigned long long n, int base, int *len)
 {
 	int i;
 
-	i = 0;
-	n < 0 ? n *= -1 : 0;
-	if (n < 0)
-		i++;
-	while (n >= 1 || n <= -1)
+	i = 1;
+	while (n >= (unsigned)base)
 	{
 		n /= base;
 		i++;
@@ -28,7 +25,7 @@ static void	ft_chklen(long long n, int base, int *len)
 	*len = i;
 }
 
-char		*ft_lltoa_base(long long val, int base)
+char		*ft_uns_lltoa_base(unsigned long long val, int base)
 {
 	char	*res;
 	char	bs[17];
@@ -41,9 +38,7 @@ char		*ft_lltoa_base(long long val, int base)
 	ft_chklen(val, base, &len);
 	res = (char*)malloc(sizeof(char) * len + 1);
 	res[len--] = '\0';
-	val < 0 ? res[0] = '-' : 0;
-	val < 0 ? val *= -1 : 0;
-	while (val >= base)
+	while (val >= (unsigned)base)
 	{
 		res[len--] = bs[val % base];
 		val /= base;

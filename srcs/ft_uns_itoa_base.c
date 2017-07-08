@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lltoa_base.c                                    :+:      :+:    :+:   */
+/*   ft_uns_itoa_base.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/22 17:41:00 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/30 09:08:06 by mikim            ###   ########.fr       */
+/*   Created: 2017/04/23 21:16:09 by mikim             #+#    #+#             */
+/*   Updated: 2017/04/30 09:10:02 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_chklen(long long n, int base, int *len)
+static void	ft_chklen(unsigned long n, int base, int *len)
 {
 	int i;
 
 	i = 0;
-	n < 0 ? n *= -1 : 0;
-	if (n < 0)
-		i++;
-	while (n >= 1 || n <= -1)
+	while (n >= (unsigned)base)
 	{
 		n /= base;
 		i++;
@@ -28,26 +25,26 @@ static void	ft_chklen(long long n, int base, int *len)
 	*len = i;
 }
 
-char		*ft_lltoa_base(long long val, int base)
+char		*ft_uns_itoa_base(unsigned int val, int base)
 {
-	char	*res;
-	char	bs[17];
-	int		len;
+	char			*res;
+	char			bs[17];
+	unsigned long	value;
+	int				len;
 
 	len = 1;
+	value = (unsigned long)val;
 	ft_strcpy(bs, "0123456789ABCDEF");
-	if (val == 0)
+	if (value == 0)
 		return (ft_strdup("0"));
-	ft_chklen(val, base, &len);
+	ft_chklen(value, base, &len);
 	res = (char*)malloc(sizeof(char) * len + 1);
 	res[len--] = '\0';
-	val < 0 ? res[0] = '-' : 0;
-	val < 0 ? val *= -1 : 0;
-	while (val >= base)
+	while (value >= (unsigned)base)
 	{
-		res[len--] = bs[val % base];
-		val /= base;
+		res[len--] = bs[value % base];
+		value /= base;
 	}
-	res[len] = bs[val % base];
+	res[len] = bs[value % base];
 	return (res);
 }

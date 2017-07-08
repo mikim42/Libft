@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uns_lltoa.c                                     :+:      :+:    :+:   */
+/*   init_args_etc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/21 20:38:47 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/30 09:10:06 by mikim            ###   ########.fr       */
+/*   Created: 2017/04/21 23:37:20 by mikim             #+#    #+#             */
+/*   Updated: 2017/04/30 09:14:11 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_chklen(unsigned long long n, int *len)
+void	init_wstr_arg(t_env *e, wchar_t **tmp)
 {
-	int	i;
-
-	i = 1;
-	while (n > 9)
+	if (e->tags.tag == pos)
 	{
-		i++;
-		n /= 10;
+		va_copy(e->ap[0], e->ap[1]);
+		while (--e->tags.pos >= 0)
+			*tmp = va_arg(e->ap[0], wchar_t *);
+		return ;
 	}
-	*len = i;
+	*tmp = va_arg(e->ap[0], wchar_t *);
 }
 
-char		*ft_uns_lltoa(unsigned long long n)
+void	init_wchar_arg(t_env *e, wchar_t *tmp)
 {
-	char	*s;
-	int		len;
-
-	ft_chklen(n, &len);
-	if (!(s = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	s[len] = '\0';
-	while (n > 9)
+	if (e->tags.tag == pos)
 	{
-		s[--len] = (n % 10) + 48;
-		n /= 10;
+		va_copy(e->ap[0], e->ap[1]);
+		while (--e->tags.pos >= 0)
+			*tmp = va_arg(e->ap[0], wchar_t);
+		return ;
 	}
-	s[--len] = n + 48;
-	return (s);
+	*tmp = va_arg(e->ap[0], wchar_t);
 }

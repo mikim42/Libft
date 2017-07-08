@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 17:47:37 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/30 09:13:41 by mikim            ###   ########.fr       */
+/*   Created: 2017/06/24 12:49:15 by mikim             #+#    #+#             */
+/*   Updated: 2017/06/24 12:51:27 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+size_t	ft_intlen(int n)
 {
-	int		i;
+	int len;
 
-	i = 0;
-	while (src[i] != '\0')
+	len = 1;
+	if (n < 0)
 	{
-		dst[i] = src[i];
-		i++;
+		len++;
+		n *= -1;
 	}
-	dst[i] = '\0';
-	return (dst);
+	while (n > 9)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 23:12:52 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/20 23:35:12 by mikim            ###   ########.fr       */
+/*   Updated: 2017/04/30 09:08:25 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char		*ft_ltoa(long n)
 	char	*s;
 	int		len;
 
-	if (n == -9223372036854775807)
-		return (ft_strdup("-9223372036854775807"));
 	ft_chklen(n, &len);
+	if (n == LONG_MIN)
+		return (ft_strdup("-9223372036854775808"));
 	if (!(s = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	s[len] = '\0';

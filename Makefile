@@ -6,7 +6,7 @@
 #    By: mikim <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/27 09:44:56 by mikim             #+#    #+#              #
-#    Updated: 2017/04/22 22:16:58 by mikim            ###   ########.fr        #
+#    Updated: 2017/06/24 12:51:55 by mikim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC = ft_memset.c\
 	ft_memmove.c\
 	ft_memchr.c\
 	ft_memcmp.c\
+	ft_intlen.c\
 	ft_strlen.c\
 	ft_strdup.c\
 	ft_strcpy.c\
@@ -56,6 +57,7 @@ SRC = ft_memset.c\
 	ft_strnequ.c\
 	ft_strsub.c\
 	ft_strjoin.c\
+	ft_strcjoin.c\
 	ft_strtrim.c\
 	ft_strsplit.c\
 	ft_itoa.c\
@@ -67,6 +69,9 @@ SRC = ft_memset.c\
 	ft_uns_itoa.c\
 	ft_uns_ltoa.c\
 	ft_uns_lltoa.c\
+	ft_uns_itoa_base.c\
+	ft_uns_ltoa_base.c\
+	ft_uns_lltoa_base.c\
 	ft_putchar.c\
 	ft_putstr.c\
 	ft_putendl.c\
@@ -89,7 +94,30 @@ SRC = ft_memset.c\
 	btree_apply_prefix.c\
 	btree_apply_infix.c\
 	btree_apply_suffix.c\
-	get_next_line.c
+	get_next_line.c\
+	ft_printf.c\
+	parse_args.c\
+	parse_spec.c\
+	init_args.c\
+	init_args_etc.c\
+	print_spec.c\
+	print_spec_etc.c\
+	print_char.c\
+	print_str.c\
+	print_wchar.c\
+	print_wstr.c\
+	print_digit.c\
+	print_base.c\
+	print_prec_a.c\
+	print_prec_e.c\
+	print_prec_f.c\
+	print_prec_g.c\
+	print_ptraddr.c\
+	print_invalid.c\
+	print_non_printable.c\
+	print_prec_tools.c\
+	print_dice.c\
+	settings.c
 
 OBJ = $(SRC:.c=.o)
 

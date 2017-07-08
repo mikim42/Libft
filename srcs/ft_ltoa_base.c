@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/22 17:37:29 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/22 22:20:21 by mikim            ###   ########.fr       */
+/*   Updated: 2017/04/30 09:08:33 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ char		*ft_ltoa_base(long val, int base)
 	len = 1;
 	val = (long)val;
 	ft_strcpy(bs, "0123456789ABCDEF");
-	if (val == -9223372036854775807)
-		return (ft_strdup("-9223372036854775807"));
+	if (val == 0)
+		return (ft_strdup("0"));
 	ft_chklen(val, base, &len);
 	res = (char*)malloc(sizeof(char) * len + 1);
 	res[len--] = '\0';

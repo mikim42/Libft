@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lowcase.c                                       :+:      :+:    :+:   */
+/*   print_dice.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/20 23:41:11 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/30 09:08:12 by mikim            ###   ########.fr       */
+/*   Created: 2017/04/26 20:00:17 by mikim             #+#    #+#             */
+/*   Updated: 2017/04/30 09:14:15 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lowcase(char *s)
+void	print_dice(t_env *e)
 {
-	int i;
+	long long	ran;
+	char		nb;
+	double		d;
+	int			i;
 
-	i = -1;
-	while (s[++i])
+	init_int_arg(e, &ran);
+	i = 0;
+	d = (double)ran * 1.23456;
+	while (i++ < 10)
 	{
-		if (s[i] >= 65 && s[i] <= 90)
-			s[i] += 32;
+		d /= 12.34;
+		d += ((long)d % 6 == 2 ? 1 : -1);
+		d = (long)d;
+		d += ((long)d % 6 == 4 ? 1 : -1);
+		d *= 21.43;
+		d += ((long)d % 6 == 0 ? 1 : -1);
 	}
+	nb = ((long)d % 6) + 49;
+	e->ret += write(e->fd, &nb, 1);
+	e->i++;
 }
