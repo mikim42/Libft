@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 23:31:56 by mikim             #+#    #+#             */
-/*   Updated: 2017/10/09 23:33:19 by mikim            ###   ########.fr       */
+/*   Updated: 2017/10/10 01:13:38 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		return (0);
 	while (s1[i] && i < (n - 1) && s1[i] == s2[i])
 		++i;
-	return (s1[i] - s2[i]);
+	return ((unsigned char)s1[i] - s2[i]);
 }

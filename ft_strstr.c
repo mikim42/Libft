@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 23:44:59 by mikim             #+#    #+#             */
-/*   Updated: 2017/10/09 23:46:34 by mikim            ###   ########.fr       */
+/*   Updated: 2017/10/10 01:43:34 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strstr(const char *big, const char *little)
 
 	i = -1;
 	res = (char*)big;
-	if (!little)
+	if (!little[0])
 		return (res);
 	while (res[++i] != '\0')
 	{

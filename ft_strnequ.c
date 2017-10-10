@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 23:33:51 by mikim             #+#    #+#             */
-/*   Updated: 2017/10/10 00:17:30 by mikim            ###   ########.fr       */
+/*   Updated: 2017/10/10 00:54:30 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int	ft_strnequ(char const *s1, char const *s2, size_t n)
 	i = 0;
 	if (!s1 || !s2)
 		return (0);
-	while (i < n - 1 && s1[i] == s2[i])
+	if (n == 0)
+		return (1);
+	while (i < n - 1 && s1[i] && s1[i] == s2[i])
 		++i;
 	return (s1[i] == s2[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 21:54:30 by mikim             #+#    #+#             */
-/*   Updated: 2017/10/10 00:10:25 by mikim            ###   ########.fr       */
+/*   Updated: 2017/10/10 01:39:05 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	tmp = NULL;
 	while (lst)
 	{
-		if (!(list = (t_list*)malloc(sizeof(t_list))))
-			return (NULL);
 		list = f(lst);
-		if (!tmp)
+		if (tmp)
 			tmp->next = list;
 		else
 			head = list;

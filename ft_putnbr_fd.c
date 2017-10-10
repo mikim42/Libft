@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 22:34:20 by mikim             #+#    #+#             */
-/*   Updated: 2017/10/09 22:57:02 by mikim            ###   ########.fr       */
+/*   Updated: 2017/10/10 01:23:04 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putnbr_fd(int n, int fd)
 	char c;
 
 	nb = (long)n;
-	nb < 0 ? write(1, "-", 1) : 0;
+	nb < 0 ? write(fd, "-", 1) : 0;
 	nb < 0 ? nb *= -1 : 0;
 	cmp = 1000000000;
 	while (cmp > 9 && nb / cmp == 0)

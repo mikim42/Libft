@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 23:01:32 by mikim             #+#    #+#             */
-/*   Updated: 2017/10/10 00:04:07 by mikim            ###   ########.fr       */
+/*   Updated: 2017/10/10 01:25:07 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int		i;
-	
+	int	i;
+
 	i = -1;
 	while (s[++i])
 		if (s[i] == c)
 			return ((char*)s + i);
 	if (c == '\0')
-		return ((char*)s);
+		return ((char*)s + i);
 	return (NULL);
 }
